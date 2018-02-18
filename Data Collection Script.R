@@ -28,7 +28,6 @@ flu.ts <- ts(flu.data[,c(12,16,17,19)], start = 2009, frequency = 52)
 
 flu.ts
 
-
 # Plot All cases reported for flu data
 autoplot(flu.ts[,3]) +
         ggtitle("Flu Cases per Week") +
@@ -144,3 +143,5 @@ plot(fitB)
 # Forcast for all Flu
 fitall <- stlf(flu.ts[,3])
 plot(fitall)
+
+####This change was made by Patrick P, not anyone else.....hopefully####
