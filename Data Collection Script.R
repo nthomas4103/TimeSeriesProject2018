@@ -154,7 +154,7 @@ fitC.diff <- stlf(diff(flu.ts[,3]))
 plot(fitC.diff)
 
 
-#Tests with decomposing and differencing
+#Tests with decomposing and differencing...
 autoplot(decompose(diff(flu.ts[,1]), type = "mult"))
 
 plot(acf(diff(flu.ts[,1])))
