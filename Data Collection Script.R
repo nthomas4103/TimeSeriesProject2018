@@ -101,7 +101,7 @@ autoplot(flu.typeb[,c(1:3,5)]) +
 # Tests for the flu compared to flu cases
 flu.test <- ts(flu.data[,c(6,17,20:22)], start = 2009, frequency = 52)
 
-# Plot cases of H1N1 compared to total flu cases....changed theme
+# Plot cases of H1N1 compared to total flu cases....changed themes to remove gridlines
 autoplot(flu.test[,c(1:2)]) +
         ggtitle("Processed Flu Tests and Cases") +
         xlab("Weeks, 2009-present") +
