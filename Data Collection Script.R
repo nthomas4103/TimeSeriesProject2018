@@ -144,4 +144,3 @@ plot(fitB)
 fitall <- stlf(flu.ts[,3])
 plot(fitall)
 
-####This change was made by Patrick P, not anyone else.....hopefully####
