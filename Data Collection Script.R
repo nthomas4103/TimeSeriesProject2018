@@ -150,6 +150,7 @@ plot(fitB.diff)
 fitall <- stlf(flu.ts[,3])
 plot(fitall)
 
+### Differencing
 fitC.diff <- stlf(diff(flu.ts[,3]))
 plot(fitC.diff)
 
@@ -160,7 +161,11 @@ autoplot(decompose(diff(flu.ts[,1]), type = "mult"))
 plot(acf(diff(flu.ts[,1])))
 
 adf.test(diff(flu.ts[,1]), k = 52)
+# Arima_models
 
+
+=======
+=======
 
 #Arima models with boxcox transformation to stabilize variance
 lambda <- BoxCox.lambda(flu.ts[,1])
