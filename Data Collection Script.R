@@ -132,18 +132,36 @@ autoplot(flu.test[,4:5])+
         theme_classic()
 
 
-## Create a Forcast Model with Flu A
+## Create a Forcast Model with Flu A with and without differencing
 fitA <- stlf(flu.ts[,1])
-plot(fit)
+plot(fitA)
+
+fitA.diff <- stlf(diff(flu.ts[,1]))
+plot(fitA.diff)
 
 ## Forcast for Flu B
 fitB <- stlf(flu.ts[,2]) 
 plot(fitB)
 
+fitB.diff <- stlf(diff(flu.ts[,2]))
+plot(fitB.diff)
+
 # Forcast for all Flu
 fitall <- stlf(flu.ts[,3])
 plot(fitall)
 
+### Differencing
+fitC.diff <- stlf(diff(flu.ts[,3]))
+plot(fitC.diff)
+
+
+#Tests with decomposing and differencing...
+autoplot(decompose(diff(flu.ts[,1]), type = "mult"))
+
+plot(acf(diff(flu.ts[,1])))
+
+adf.test(diff(flu.ts[,1]), k = 52)
+=======
 #Arima models with boxcox transformation to stabilize variance
 lambda <- BoxCox.lambda(flu.ts[,1])
 
@@ -183,3 +201,4 @@ autoplot(forecast(fluall.arima, level = c(80, 95), h = 100)) +
       theme(plot.title = element_text(hjust = 0.5, size = 20, face = "bold"))
 
 checkresiduals(fluall.arima)
+
