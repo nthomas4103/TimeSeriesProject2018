@@ -161,7 +161,12 @@ autoplot(decompose(diff(flu.ts[,1]), type = "mult"))
 plot(acf(diff(flu.ts[,1])))
 
 adf.test(diff(flu.ts[,1]), k = 52)
+# Arima_models
+
+
 =======
+=======
+
 #Arima models with boxcox transformation to stabilize variance
 lambda <- BoxCox.lambda(flu.ts[,1])
 
@@ -201,4 +206,3 @@ autoplot(forecast(fluall.arima, level = c(80, 95), h = 100)) +
       theme(plot.title = element_text(hjust = 0.5, size = 20, face = "bold"))
 
 checkresiduals(fluall.arima)
-
