@@ -174,6 +174,8 @@ autoplot(forecast(flua.arima, level = c(80, 95), h = 100)) +
       theme_classic() +
       theme(plot.title = element_text(hjust = 0.5, size = 20, face = "bold"))
 
+checkresiduals(flua.arima)
+
 lambda2 <- BoxCox.lambda(flu.ts[,2])
 
 flub.boxcox <- BoxCox(flu.ts[,2], lambda = lambda2)
@@ -185,6 +187,8 @@ autoplot(forecast(flub.arima, level = c(80, 95), h = 100)) +
       theme_classic() +
       theme(plot.title = element_text(hjust = 0.5, size = 20, face = "bold"))
 
+checkresiduals(flub.arima)
+
 lambda3 <- BoxCox.lambda(flu.ts[,3])
 
 fluall.boxcox <- BoxCox(flu.ts[,3], lambda = lambda3)
@@ -195,3 +199,5 @@ autoplot(forecast(fluall.arima, level = c(80, 95), h = 100)) +
       ylab("Flu Cases") + 
       theme_classic() +
       theme(plot.title = element_text(hjust = 0.5, size = 20, face = "bold"))
+
+checkresiduals(fluall.arima)
