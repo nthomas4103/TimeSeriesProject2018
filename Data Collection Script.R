@@ -144,3 +144,42 @@ plot(fitB)
 fitall <- stlf(flu.ts[,3])
 plot(fitall)
 
+#Arima models with boxcox transformation to stabilize variance
+lambda <- BoxCox.lambda(flu.ts[,1])
+
+flua.boxcox <- BoxCox(flu.ts[,1], lambda = lambda)
+flua.arima <- auto.arima(flua.boxcox, D = 1)
+autoplot(forecast(flua.arima, level = c(80, 95), h = 100)) +
+      ggtitle("Forecast for Flu A") +
+      xlab("Weeks, 2009-2020") +
+      ylab("Flu Cases") + 
+      theme_classic() +
+      theme(plot.title = element_text(hjust = 0.5, size = 20, face = "bold"))
+
+checkresiduals(flua.arima)
+
+lambda2 <- BoxCox.lambda(flu.ts[,2])
+
+flub.boxcox <- BoxCox(flu.ts[,2], lambda = lambda2)
+flub.arima <- auto.arima(flub.boxcox, D = 1)
+autoplot(forecast(flub.arima, level = c(80, 95), h = 100)) +
+      ggtitle("Forecast for Flu B") +
+      xlab("Weeks, 2009-2020") +
+      ylab("Flu Cases") + 
+      theme_classic() +
+      theme(plot.title = element_text(hjust = 0.5, size = 20, face = "bold"))
+
+checkresiduals(flub.arima)
+
+lambda3 <- BoxCox.lambda(flu.ts[,3])
+
+fluall.boxcox <- BoxCox(flu.ts[,3], lambda = lambda3)
+fluall.arima <- auto.arima(fluall.boxcox, D = 1)
+autoplot(forecast(fluall.arima, level = c(80, 95), h = 100)) +
+      ggtitle("Forecast for A and B") +
+      xlab("Weeks, 2009-2020") +
+      ylab("Flu Cases") + 
+      theme_classic() +
+      theme(plot.title = element_text(hjust = 0.5, size = 20, face = "bold"))
+
+checkresiduals(fluall.arima)
